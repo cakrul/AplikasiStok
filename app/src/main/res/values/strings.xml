@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Aplikasi Stok</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Panel Admin</string>
+    <string name="title_akun">Detail Akun</string>
+    <string name="title_card_akun">Login aplikasi stok barang atau daftar barang</string>
+    <string name="btn_masuk">Masuk</string>
+    <string name="btn_daftar">Daftar</string>
+    <string name="versi_aplikasi">Versi Aplikasi : 1.0.0</string>
+    <string name="title_username">E-mail / Nomor Telepon</string>
+    <string name="title_password">Kata Sandi</string>
+    <string name="btn_lupa_kata_sandi">Lupa kata sandi?</string>
+    <string name="title_daftar">Tidak memiliki akun?</string>
+    <string name="title_masuk">Sudah memiliki akun?</string>
+    <string name="btn_daftar_sekarang">Daftar Sekarang</string>
+    <string name="btn_masuk_login">Login Akun</string>
+    <string name="desc_img_logo_aplikasi">Logo Aplikasi</string>
+    <string name="title_activity_main_home">MainActivityHome</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_pegawai">PegawaiActivity</string>
+    <string name="title_activity_produk">Produk</string>
+</resources>
