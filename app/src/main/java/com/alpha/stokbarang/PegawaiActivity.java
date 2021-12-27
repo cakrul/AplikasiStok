@@ -3,6 +3,7 @@ package com.alpha.stokbarang;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.alpha.stokbarang.adapter.PegawaiAdapter;
@@ -12,13 +13,16 @@ import com.alpha.stokbarang.model.User;
 import com.alpha.stokbarang.model.UserResponse;
 import com.alpha.stokbarang.utils.Constant;
 import com.alpha.stokbarang.utils.RecyclerItemClickListener;
+import com.alpha.stokbarang.utils.SwipeToDeleteCallback;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +49,7 @@ public class PegawaiActivity extends AppCompatActivity {
     List<User> semuauserList = new ArrayList<>();
     PegawaiAdapter pegawaiAdapter;
     BaseApiService mApiService;
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,7 @@ public class PegawaiActivity extends AppCompatActivity {
         rvPegawai.setItemAnimator(new DefaultItemAnimator());
 
         getResultListUser();
+        enableSwipeToDeleteAndUndo();
     }
 
     private void getResultListUser(){
@@ -125,5 +131,28 @@ public class PegawaiActivity extends AppCompatActivity {
                         startActivity(detailUser);
                     }
                 }));
+    }
+
+    private void enableSwipeToDeleteAndUndo() {
+        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(mContext) {
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+
+                final int position = viewHolder.getAdapterPosition();
+                pegawaiAdapter.removeItem(position);
+
+            }
+        };
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchhelper.attachToRecyclerView(rvPegawai);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(mContext, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+        finish();
     }
 }

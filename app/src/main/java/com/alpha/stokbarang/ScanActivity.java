@@ -7,18 +7,39 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alpha.stokbarang.api.BaseApiService;
+import com.alpha.stokbarang.api.UtilsApi;
+import com.alpha.stokbarang.utils.Constant;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ScanActivity extends AppCompatActivity {
+
+    ProgressDialog loading;
+    BaseApiService mApiService;
+    Context mContext;
 
     private CodeScanner mCodeScanner;
     private int CAMERA_PERMISSION_CODE = 10232;
@@ -28,6 +49,8 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
+        mApiService = UtilsApi.getAPIService();
+
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
@@ -36,7 +59,8 @@ public class ScanActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ScanActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        String getResult = result.getText();
+                        getResultScanBarang(getResult);
                     }
                 });
             }
@@ -48,6 +72,7 @@ public class ScanActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void requestPermisionCamera(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(ScanActivity.this, Manifest.permission.CAMERA)) {
@@ -70,6 +95,53 @@ public class ScanActivity extends AppCompatActivity {
         }else{
             ActivityCompat.requestPermissions(ScanActivity.this,new String[] {Manifest.permission.CAMERA},CAMERA_PERMISSION_CODE);
         }
+    }
+
+    private void getResultScanBarang(String kd_produk){
+        loading = ProgressDialog.show(this, null, "Harap Tunggu...", true, false);
+
+        mApiService.getScan(kd_produk).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    loading.dismiss();
+
+                    try {
+                        JSONObject jsonRESULTS = new JSONObject(response.body().string());
+                        Log.d("statusnya apa", jsonRESULTS.getString("success"));
+                        if (jsonRESULTS.getString("success").equals("true")){
+
+                            String kd_produk = jsonRESULTS.getJSONObject("data").getString("kd_produk");
+                            String nm_produk = jsonRESULTS.getJSONObject("data").getString("nm_produk");
+
+                            Intent hasilScan = new Intent(ScanActivity.this, InputStokActivity.class);
+                            hasilScan.putExtra("kode", kd_produk);
+                            hasilScan.putExtra("nm", nm_produk);
+                            startActivity(hasilScan);
+                            finish();
+
+                        } else {
+                            String error_message = jsonRESULTS.getString("message");
+                            Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(mContext, "Gagal mengambil barang QR", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                loading.dismiss();
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

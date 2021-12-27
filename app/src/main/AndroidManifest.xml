@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InputStokActivity"></activity>
+        <activity android:name=".DetailProdukActivity"></activity>
+        <activity android:name=".StokActivity" />
+        <activity android:name=".TambahProdukActivity" />
+        <activity android:name=".InputStokActivity" />
         <activity android:name=".ProfilActivity" />
         <activity
             android:name=".ProdukActivity"

@@ -46,6 +46,11 @@ public class PegawaiAdapter extends RecyclerView.Adapter<PegawaiAdapter.PegawaiH
         return semuauserLists.size();
     }
 
+    public void removeItem(int position) {
+        semuauserLists.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public static class PegawaiHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tvNama)
