@@ -2,13 +2,17 @@ package com.alpha.stokbarang;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.alpha.stokbarang.utils.SharedPrefManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,8 +29,13 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout liststok;
     @BindView(R.id.ivProfil)
     ImageView ivProfil;
+    @BindView(R.id.text_nama_user)
+    TextView txtNamaUser;
+
+    SharedPrefManager sharedPrefManager;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        sharedPrefManager = new SharedPrefManager(this);
+        txtNamaUser.setText("Hai.. "+sharedPrefManager.getSPNama());
 
         llInput.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,6 +30,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,9 +51,9 @@ public class ScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan);
 
         mApiService = UtilsApi.getAPIService();
-
+        mContext = this;
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
-        mCodeScanner = new CodeScanner(this, scannerView);
+        mCodeScanner = new CodeScanner(mContext, scannerView);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
             public void onDecoded(@NonNull final Result result) {
@@ -132,7 +133,16 @@ public class ScanActivity extends AppCompatActivity {
 
                 } else {
                     loading.dismiss();
-                    Toast.makeText(mContext, "Gagal mengambil barang QR", Toast.LENGTH_SHORT).show();
+                    new SweetAlertDialog(mContext, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Oops...")
+                            .setContentText("Gagal mencari barang!")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    startActivity(new Intent(mContext, InputStokActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                }
+                            })
+                            .show();
                 }
             }
 
@@ -149,9 +159,9 @@ public class ScanActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(ScanActivity.this, "Izin Camera Terpenuhi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Izin Camera Terpenuhi", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(ScanActivity.this, "Perlu izin Kamera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Perlu izin Kamera", Toast.LENGTH_SHORT).show();
             }
         }
     }

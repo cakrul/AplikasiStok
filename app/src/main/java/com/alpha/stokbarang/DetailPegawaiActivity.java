@@ -14,6 +14,8 @@ import com.alpha.stokbarang.api.UtilsApi;
 import com.alpha.stokbarang.utils.Constant;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -48,6 +50,8 @@ public class DetailPegawaiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_pegawai);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Detail Pegawai");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         mContext = this;
         mApiService = UtilsApi.getAPIService();

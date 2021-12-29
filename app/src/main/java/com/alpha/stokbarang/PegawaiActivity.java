@@ -57,14 +57,16 @@ public class PegawaiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pegawai);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Data Pegawai");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent tambahPegawai = new Intent(mContext, TambahPegawaiActivity.class);
+                startActivity(tambahPegawai);
             }
         });
 

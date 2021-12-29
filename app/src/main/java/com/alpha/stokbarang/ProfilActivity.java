@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.alpha.stokbarang.utils.SharedPrefManager;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,9 +36,8 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Profil");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
         sharedPrefManager = new SharedPrefManager(this);

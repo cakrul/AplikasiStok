@@ -13,20 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailProdukActivity"></activity>
-        <activity android:name=".StokActivity" />
-        <activity android:name=".TambahProdukActivity" />
-        <activity android:name=".InputStokActivity" />
-        <activity android:name=".ProfilActivity" />
+        <activity android:name=".TambahPegawaiActivity"
+            android:parentActivityName=".PegawaiActivity"/>
+        <activity android:name=".DetailProdukActivity"
+            android:parentActivityName=".ProdukActivity"/>
+        <activity android:name=".StokActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TambahProdukActivity"
+            android:parentActivityName=".ProdukActivity"/>
+        <activity android:name=".InputStokActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ProfilActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ProdukActivity"
             android:label="@string/title_activity_produk"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DetailPegawaiActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".DetailPegawaiActivity"
+            android:parentActivityName=".PegawaiActivity"/>
         <activity
             android:name=".PegawaiActivity"
             android:label="@string/title_activity_pegawai"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreenActivity"

@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +59,8 @@ public class InputStokActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_stok);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Input Stok Barang");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Bind variable global
         ButterKnife.bind(this);
 

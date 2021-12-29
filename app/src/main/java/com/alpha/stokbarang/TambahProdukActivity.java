@@ -14,6 +14,8 @@ import com.alpha.stokbarang.api.BaseApiService;
 import com.alpha.stokbarang.api.UtilsApi;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -42,6 +44,8 @@ public class TambahProdukActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_produk);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Input Data Barang");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Bind variable global
         ButterKnife.bind(this);
 
