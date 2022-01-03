@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         sharedPrefManager = new SharedPrefManager(this);
-        txtNamaUser.setText("Hai.. "+sharedPrefManager.getSPNama());
+        txtNamaUser.setText(sharedPrefManager.getSPNama());
 
         llInput.setOnClickListener(new View.OnClickListener() {
             @Override
