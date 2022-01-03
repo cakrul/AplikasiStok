@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.alpha.stokbarang.api.BaseApiService;
 import com.alpha.stokbarang.api.UtilsApi;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -35,10 +36,19 @@ public class TambahProdukActivity extends AppCompatActivity {
     @BindView(R.id.etStokProduk)
     TextInputEditText tieStok;
 
+    @BindView(R.id.tiNm)
+    TextInputLayout tiNm;
+    @BindView(R.id.tiStok)
+    TextInputLayout tiStok;
+    @BindView(R.id.tiHarga)
+    TextInputLayout tiHarga;
+
 
     ProgressDialog loading;
     BaseApiService mApiService;
     Context mContext;
+
+    boolean isNm, isStok, isHarga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +65,39 @@ public class TambahProdukActivity extends AppCompatActivity {
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestSimpanProduk(tieNm.getText().toString(),tieHarga.getText().toString(),tieStok.getText().toString());
+                CheckAllFields();
             }
         });
+    }
+
+    private void CheckAllFields() {
+        if (tieNm.getText().toString().isEmpty()){
+            tiNm.setError("Nama Produk Kosong!");
+            isNm = false;
+        }else{
+            isNm = true;
+            tiNm.setErrorEnabled(false);
+        }
+
+        if (tieStok.getText().toString().isEmpty()){
+            tiStok.setError("Nama Produk Kosong!");
+            isStok = false;
+        }else{
+            isStok = true;
+            tiStok.setErrorEnabled(false);
+        }
+
+        if (tieHarga.getText().toString().isEmpty()){
+            tiHarga.setError("Nama Produk Kosong!");
+            isHarga = false;
+        }else{
+            isHarga = true;
+            tiHarga.setErrorEnabled(false);
+        }
+
+        if (isNm && isStok && isHarga) {
+            requestSimpanProduk(tieNm.getText().toString(),tieHarga.getText().toString(),tieStok.getText().toString());
+        }
     }
 
     private void requestSimpanProduk(String nm, String hrg, String jml){

@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alpha.stokbarang.R;
 import com.alpha.stokbarang.model.ProdukList;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -45,6 +47,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.BarangHold
         holder.tvHarga.setText(formatRupiah(semuaproduk.getHarga_jual()));
         holder.tvStok.setText("Stok : "+semuaproduk.getStok());
         holder.tvUpdated.setText("Update Terakhir "+semuaproduk.getUpdated_at());
+        holder.tvKdBarang.setText("Kode Produk : "+semuaproduk.getKd_produk());
     }
 
     @Override
@@ -61,6 +64,8 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.BarangHold
         TextView tvStok;
         @BindView(R.id.tvUpdated)
         TextView tvUpdated;
+        @BindView(R.id.tvKdBarang)
+        TextView tvKdBarang;
 
         public BarangHolder(View itemView) {
             super(itemView);
