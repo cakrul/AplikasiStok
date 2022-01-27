@@ -26,4 +26,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_pegawai">PegawaiActivity</string>
     <string name="title_activity_produk">Produk</string>
+    <string name="title_activity_stok_keluar">StokKeluarActivity</string>
 </resources>

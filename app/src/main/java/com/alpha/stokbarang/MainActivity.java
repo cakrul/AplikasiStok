@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.input)
     LinearLayout llInput;
+    @BindView(R.id.output)
+    LinearLayout llOutput;
     @BindView(R.id.barang)
     LinearLayout barang;
     @BindView(R.id.pegawai)
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivProfil;
     @BindView(R.id.text_nama_user)
     TextView txtNamaUser;
+    @BindView(R.id.llpegawai)
+    LinearLayout llpegawai;
 
     SharedPrefManager sharedPrefManager;
 
@@ -47,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPrefManager = new SharedPrefManager(this);
         txtNamaUser.setText(sharedPrefManager.getSPNama());
+
+        if (sharedPrefManager.getSPPosisi().equals("Admin")){
+            llpegawai.setVisibility(View.VISIBLE);
+        }
+
+        llOutput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ouput =new Intent(MainActivity.this, StokKeluarActivity.class);
+                startActivity(ouput);
+            }
+        });
 
         llInput.setOnClickListener(new View.OnClickListener() {
             @Override

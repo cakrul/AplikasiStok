@@ -82,9 +82,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorOnSurface">@color/colorPrimaryDark</item>
         <item name="colorError">@color/colorAccent</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MaterialComponents.Subtitle1
+        </item>
         <item name="textAppearanceCaption">@style/TextAppearance.AppCompat.Caption</item>
-        <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
     </style>
 
 </resources>

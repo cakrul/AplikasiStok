@@ -2,7 +2,7 @@ package com.alpha.stokbarang.api;
 
 public class UtilsApi {
     // servernya
-    public static final String BASE_URL_API = "https://api-produk.alphalogic.web.id/api/";
+    public static final String BASE_URL_API = "https://riki-stok.my.id/api/";
 
     // Mendeklarasikan Interface BaseApiService
     public static BaseApiService getAPIService(){

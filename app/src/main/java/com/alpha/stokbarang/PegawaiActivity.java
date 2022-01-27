@@ -3,7 +3,6 @@ package com.alpha.stokbarang;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import com.alpha.stokbarang.adapter.PegawaiAdapter;
@@ -15,7 +14,6 @@ import com.alpha.stokbarang.utils.Constant;
 import com.alpha.stokbarang.utils.RecyclerItemClickListener;
 import com.alpha.stokbarang.utils.SwipeToDeleteCallback;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,7 +59,7 @@ public class PegawaiActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.add);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -11,17 +11,14 @@ import com.alpha.stokbarang.api.UtilsApi;
 import com.alpha.stokbarang.model.ProdukList;
 import com.alpha.stokbarang.model.ProduklistResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -68,7 +65,7 @@ public class ProdukActivity extends AppCompatActivity {
 
         getResultListBarang();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.add);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

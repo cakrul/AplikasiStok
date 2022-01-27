@@ -13,30 +13,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TambahPegawaiActivity"
-            android:parentActivityName=".PegawaiActivity"/>
-        <activity android:name=".DetailProdukActivity"
-            android:parentActivityName=".ProdukActivity"/>
-        <activity android:name=".StokActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".TambahProdukActivity"
-            android:parentActivityName=".ProdukActivity"/>
-        <activity android:name=".InputStokActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ProfilActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ScanKeluarActivity"
+            android:label="Scan Barang"
+            android:parentActivityName=".OutputActivity"
+            />
+        <activity android:name=".OutputActivity"
+            android:label="Stok Keluar Barang"
+            android:parentActivityName=".StokKeluarActivity"/>
+        <activity
+            android:name=".StokKeluarActivity"
+            android:label="Data Keluar Stok Barang"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TambahPegawaiActivity"
+            android:parentActivityName=".PegawaiActivity" />
+        <activity
+            android:name=".DetailProdukActivity"
+            android:parentActivityName=".ProdukActivity" />
+        <activity
+            android:name=".StokActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TambahProdukActivity"
+            android:parentActivityName=".ProdukActivity" />
+        <activity
+            android:name=".InputStokActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ProfilActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ProdukActivity"
             android:label="@string/title_activity_produk"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".DetailPegawaiActivity"
-            android:parentActivityName=".PegawaiActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailPegawaiActivity"
+            android:parentActivityName=".PegawaiActivity" />
         <activity
             android:name=".PegawaiActivity"
             android:label="@string/title_activity_pegawai"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreenActivity"

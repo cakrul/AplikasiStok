@@ -1,5 +1,6 @@
 package com.alpha.stokbarang.api;
 import com.alpha.stokbarang.model.ProduklistResponse;
+import com.alpha.stokbarang.model.StokKeluarResponse;
 import com.alpha.stokbarang.model.StokResponse;
 import com.alpha.stokbarang.model.UserResponse;
 
@@ -34,6 +35,12 @@ public interface BaseApiService {
                                   @Field("txt_nip") String txt_nip);
 
     @FormUrlEncoded
+    @POST("stok/keluar")
+    Call<ResponseBody> keluarStok(@Field("kd_produk") String kd_produk,
+                                  @Field("txt_qty") String txt_qty,
+                                  @Field("txt_nip") String txt_nip);
+
+    @FormUrlEncoded
     @POST("produk/tambah")
     Call<ResponseBody> tambahProduk(@Field("txt_nm_produk") String txt_nm_produk,
                                   @Field("txt_harga_jual") String txt_harga_jual,
@@ -47,6 +54,9 @@ public interface BaseApiService {
 
     @GET("stok")
     Call<StokResponse> getStok();
+
+    @GET("stok/keluar")
+    Call<StokKeluarResponse> getStokKeluar();
 
     @GET("produk/scan/{kode}")
     Call<ResponseBody> getScan(@Path("kode") String kode);
