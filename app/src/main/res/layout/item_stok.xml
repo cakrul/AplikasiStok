@@ -46,16 +46,6 @@
                     tools:text="Air Ades" />
 
                 <TextView
-                    android:id="@+id/tvSHarga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    tools:text="80000" />
-
-                <TextView
                     android:id="@+id/tvSQty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

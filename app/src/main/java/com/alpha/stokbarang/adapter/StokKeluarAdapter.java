@@ -45,7 +45,6 @@ public class StokKeluarAdapter extends RecyclerView.Adapter<StokKeluarAdapter.St
         holder.txt_s_kd.setText(semuastok.getKd_produk());
         holder.txt_s_nm.setText(semuastok.getNm_produk());
         holder.txt_s_qty.setText("Stok Update : "+semuastok.getQty());
-        holder.txt_s_harga.setText(formatRupiah(Double.valueOf(semuastok.getHarga())));
         holder.txt_s_wkt_in.setText("Waktu Input : "+semuastok.getWkt_keluar());
     }
 
@@ -64,8 +63,6 @@ public class StokKeluarAdapter extends RecyclerView.Adapter<StokKeluarAdapter.St
         TextView txt_s_kd;
         @BindView(R.id.tvSKQty)
         TextView txt_s_qty;
-        @BindView(R.id.tvSKHarga)
-        TextView txt_s_harga;
         @BindView(R.id.tvSKWaktuMasuk)
         TextView txt_s_wkt_in;
 

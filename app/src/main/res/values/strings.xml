@@ -6,7 +6,7 @@
     <string name="title_card_akun">Login aplikasi stok barang atau daftar barang</string>
     <string name="btn_masuk">Masuk</string>
     <string name="btn_daftar">Daftar</string>
-    <string name="versi_aplikasi">Versi Aplikasi : 1.0.0</string>
+    <string name="versi_aplikasi">Versi Aplikasi : 2.0.Rev</string>
     <string name="title_username">E-mail / Nomor Telepon</string>
     <string name="title_password">Kata Sandi</string>
     <string name="btn_lupa_kata_sandi">Lupa kata sandi?</string>

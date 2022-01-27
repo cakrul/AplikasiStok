@@ -22,7 +22,7 @@
             android:parentActivityName=".StokKeluarActivity"/>
         <activity
             android:name=".StokKeluarActivity"
-            android:label="Data Keluar Stok Barang"
+            android:label="Data Stok Keluar"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

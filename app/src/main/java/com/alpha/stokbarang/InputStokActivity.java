@@ -40,8 +40,8 @@ public class InputStokActivity extends AppCompatActivity {
     EditText etKdP;
     @BindView(R.id.etNamaP)
     EditText etNamaP;
-    @BindView(R.id.etHargaProduk)
-    EditText etHargaP;
+//    @BindView(R.id.etHargaProduk)
+//    EditText etHargaP;
     @BindView(R.id.etQty)
     EditText etQtyP;
     @BindView(R.id.btnTambahStok)
@@ -59,7 +59,7 @@ public class InputStokActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_stok);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Input Stok Barang");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Barang Masuk");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Bind variable global
         ButterKnife.bind(this);
@@ -91,7 +91,8 @@ public class InputStokActivity extends AppCompatActivity {
 
                 requestSimpanStok(
                         etKdP.getText().toString(),
-                        etHargaP.getText().toString(),
+//                        etHargaP.getText().toString(),
+                        "0",
                         etQtyP.getText().toString(),
                         sharedPrefManager.getSPNip()
                 );

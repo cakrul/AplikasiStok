@@ -87,25 +87,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:paddingStart="5dp"
-                android:paddingEnd="0dp"
-                android:text="Harga Produk"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="sans-serif-condensed-medium"-->
+<!--                android:paddingStart="5dp"-->
+<!--                android:paddingEnd="0dp"-->
+<!--                android:text="Harga Produk"-->
+<!--                android:textAllCaps="true"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <EditText
-                android:id="@+id/etHargaProduk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:inputType="number" />
+<!--            <EditText-->
+<!--                android:id="@+id/etHargaProduk"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:inputType="number" />-->
 
             <TextView
                 android:id="@+id/textView"
@@ -139,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="Tambah" />
+                android:text="Simpan Stok Masuk" />
         </LinearLayout>
 
     </LinearLayout>

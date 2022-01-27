@@ -49,7 +49,7 @@ public class ScanKeluarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_keluar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Stok Keluar Barang");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Scan Stok Keluar");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mApiService = UtilsApi.getAPIService();

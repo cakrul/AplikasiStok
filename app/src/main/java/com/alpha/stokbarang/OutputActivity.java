@@ -34,8 +34,8 @@ public class OutputActivity extends AppCompatActivity {
     EditText KetKdP;
     @BindView(R.id.KetNamaP)
     EditText KetNamaP;
-    @BindView(R.id.KetHargaProduk)
-    EditText KetHargaP;
+//    @BindView(R.id.KetHargaProduk)
+//    EditText KetHargaP;
     @BindView(R.id.KetQty)
     EditText KetQtyP;
     @BindView(R.id.btnKeluarStok)
@@ -53,7 +53,7 @@ public class OutputActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_output);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Data Keluar Stok Barang");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Barang Keluar");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Bind variable global
@@ -75,7 +75,7 @@ public class OutputActivity extends AppCompatActivity {
         KimageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent input =new Intent(OutputActivity.this, ScanActivity.class);
+                Intent input =new Intent(OutputActivity.this, ScanKeluarActivity.class);
                 startActivity(input);
             }
         });

@@ -43,7 +43,6 @@ public class StokAdapter extends RecyclerView.Adapter<StokAdapter.StokHolder> {
         holder.txt_s_nm_p.setText("Petugas Input :"+semuastok.getNm_pegawai());
         holder.txt_s_nm.setText(semuastok.getNm_produk());
         holder.txt_s_qty.setText("Stok Update : "+semuastok.getQty());
-        holder.txt_s_harga.setText(formatRupiah(Double.valueOf(semuastok.getHarga())));
         holder.txt_s_wkt_in.setText("Waktu Input : "+semuastok.getWkt_masuk());
     }
 
@@ -60,8 +59,6 @@ public class StokAdapter extends RecyclerView.Adapter<StokAdapter.StokHolder> {
         TextView txt_s_nm;
         @BindView(R.id.tvSQty)
         TextView txt_s_qty;
-        @BindView(R.id.tvSHarga)
-        TextView txt_s_harga;
         @BindView(R.id.tvSWaktuMasuk)
         TextView txt_s_wkt_in;
 

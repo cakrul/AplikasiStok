@@ -43,7 +43,7 @@ public class StokActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stok);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("History Input Stok");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Data Stok Masuk");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
