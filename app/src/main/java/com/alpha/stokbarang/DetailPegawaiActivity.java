@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.alpha.stokbarang.api.BaseApiService;
 import com.alpha.stokbarang.api.UtilsApi;
@@ -19,6 +20,10 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailPegawaiActivity extends AppCompatActivity {
 
@@ -84,14 +89,35 @@ public class DetailPegawaiActivity extends AppCompatActivity {
                         .setConfirmButton("Hapus",new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.setTitleText("Terhapus!")
-                                        .setContentText("Pegawai sukses terhapus!")
-                                        .setConfirmText("OK")
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                requestDeletePegawai(Mnip);
                             }
                         })
                         .show();
+            }
+        });
+    }
+
+    private void requestDeletePegawai(String nip){
+        loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+
+        mApiService.hapusPegawai(nip).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    loading.dismiss();
+                    startActivity(new Intent(mContext, PegawaiActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(mContext, "Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                loading.dismiss();
+                Toast.makeText(mContext, "koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
     }

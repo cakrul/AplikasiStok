@@ -9,4 +9,6 @@ public class Constant {
     public static final String KEY_PWD_P = "keypwdp";
     public static final String KEY_KD_PRODUK = "kd_produk_e";
     public static final String KEY_NM_PRODUK = "nm_produk_e";
+    public static final String KEY_HARGA_P = "harga_e";
+    public static final String KEY_STOK_P = "stok_e";
 }

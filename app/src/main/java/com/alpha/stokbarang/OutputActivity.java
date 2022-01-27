@@ -75,8 +75,8 @@ public class OutputActivity extends AppCompatActivity {
         KimageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent input =new Intent(OutputActivity.this, ScanKeluarActivity.class);
-                startActivity(input);
+                Intent output =new Intent(OutputActivity.this, ScanKeluarActivity.class);
+                startActivity(output);
             }
         });
 
@@ -107,7 +107,7 @@ public class OutputActivity extends AppCompatActivity {
                                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                         @Override
                                         public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                            startActivity(new Intent(mContext, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                            startActivity(new Intent(mContext, StokKeluarActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                                         }
                                     })
                                     .show();

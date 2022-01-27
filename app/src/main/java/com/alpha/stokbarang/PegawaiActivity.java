@@ -77,7 +77,6 @@ public class PegawaiActivity extends AppCompatActivity {
         rvPegawai.setItemAnimator(new DefaultItemAnimator());
 
         getResultListUser();
-        enableSwipeToDeleteAndUndo();
     }
 
     private void getResultListUser(){
@@ -131,22 +130,6 @@ public class PegawaiActivity extends AppCompatActivity {
                         startActivity(detailUser);
                     }
                 }));
-    }
-
-    private void enableSwipeToDeleteAndUndo() {
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(mContext) {
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
-
-                final int position = viewHolder.getAdapterPosition();
-                pegawaiAdapter.removeItem(position);
-
-            }
-        };
-
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
-        itemTouchhelper.attachToRecyclerView(rvPegawai);
     }
 
     @Override

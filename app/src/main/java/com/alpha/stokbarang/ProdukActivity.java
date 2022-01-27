@@ -10,6 +10,10 @@ import com.alpha.stokbarang.api.BaseApiService;
 import com.alpha.stokbarang.api.UtilsApi;
 import com.alpha.stokbarang.model.ProdukList;
 import com.alpha.stokbarang.model.ProduklistResponse;
+import com.alpha.stokbarang.model.Stok;
+import com.alpha.stokbarang.model.User;
+import com.alpha.stokbarang.utils.Constant;
+import com.alpha.stokbarang.utils.RecyclerItemClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -88,6 +92,8 @@ public class ProdukActivity extends AppCompatActivity {
 
                     rcvBarang.setAdapter(new BarangAdapter(mContext, semuaBarangItems));
                     barangAdapter.notifyDataSetChanged();
+
+                    initDataIntent(semuaprodukItemList);
                 } else {
                     loading.dismiss();
                     Toast.makeText(mContext, "Gagal mengambil data dosen", Toast.LENGTH_SHORT).show();
@@ -100,6 +106,26 @@ public class ProdukActivity extends AppCompatActivity {
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initDataIntent(final List<ProdukList> produkListList){
+        rcvBarang.addOnItemTouchListener(
+                new RecyclerItemClickListener(mContext, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        String kd_produk = String.valueOf(produkListList.get(position).getKd_produk());
+                        String nm_produk = produkListList.get(position).getNm_produk();
+                        Double harga_jual = produkListList.get(position).getHarga_jual();
+                        String stok = produkListList.get(position).getStok();
+
+                        Intent detailUser = new Intent(mContext, DetailProdukActivity.class);
+                        detailUser.putExtra(Constant.KEY_KD_PRODUK, kd_produk);
+                        detailUser.putExtra(Constant.KEY_NM_PRODUK, nm_produk);
+                        detailUser.putExtra(Constant.KEY_HARGA_P, harga_jual);
+                        detailUser.putExtra(Constant.KEY_STOK_P, stok);
+                        startActivity(detailUser);
+                    }
+                }));
     }
 
     @Override

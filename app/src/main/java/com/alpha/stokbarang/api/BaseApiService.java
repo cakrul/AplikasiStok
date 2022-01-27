@@ -6,6 +6,7 @@ import com.alpha.stokbarang.model.UserResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -61,7 +62,11 @@ public interface BaseApiService {
     @GET("produk/scan/{kode}")
     Call<ResponseBody> getScan(@Path("kode") String kode);
 
+    @DELETE("pegawai/hapus/{nip}")
+    Call<ResponseBody> hapusPegawai(@Path("nip") String nip);
 
+    @DELETE("produk/hapus/{kd_produk}")
+    Call<ResponseBody> hapusProduk(@Path("kd_produk") String kd_produk);
 
 
 }
