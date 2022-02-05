@@ -80,35 +80,9 @@ public class DetailProdukActivity extends AppCompatActivity {
                         .setConfirmButton("Hapus",new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
-                                requestDeleteProduk(kd_produk);
                             }
                         })
                         .show();
-            }
-        });
-    }
-
-    private void requestDeleteProduk(String kd_produk_nya){
-        loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-
-        mApiService.hapusProduk(kd_produk_nya).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
-                    loading.dismiss();
-                    startActivity(new Intent(mContext, PegawaiActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                } else {
-                    loading.dismiss();
-                    Toast.makeText(mContext, "Gagal", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                loading.dismiss();
-                Toast.makeText(mContext, "koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
     }

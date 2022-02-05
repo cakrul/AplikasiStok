@@ -46,8 +46,7 @@
         <activity
             android:name=".ProdukActivity"
             android:label="@string/title_activity_produk"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailPegawaiActivity"
             android:parentActivityName=".PegawaiActivity" />

@@ -10,19 +10,21 @@ import com.alpha.stokbarang.api.BaseApiService;
 import com.alpha.stokbarang.api.UtilsApi;
 import com.alpha.stokbarang.model.ProdukList;
 import com.alpha.stokbarang.model.ProduklistResponse;
-import com.alpha.stokbarang.model.Stok;
-import com.alpha.stokbarang.model.User;
 import com.alpha.stokbarang.utils.Constant;
 import com.alpha.stokbarang.utils.RecyclerItemClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,11 +53,11 @@ public class ProdukActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produk);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Data Barang");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        Objects.requireNonNull(getSupportActionBar()).setTitle("Data Barang");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
 
@@ -75,6 +77,61 @@ public class ProdukActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent tambah =new Intent(ProdukActivity.this, TambahProdukActivity.class);
                 startActivity(tambah);
+            }
+        });
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Pencaharian Produk...");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(final String query) {
+
+                getResultListBarangCari(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getResultListBarangCari(newText);
+                return false;
+            }
+
+
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void getResultListBarangCari(String cari_produk){
+
+        mApiService.getCariProduk(cari_produk).enqueue(new Callback<ProduklistResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<ProduklistResponse> call, @NonNull Response<ProduklistResponse> response) {
+                if (response.isSuccessful()){
+
+                    final List<ProdukList> semuaBarangItems = response.body().getSemuaproduk();
+
+                    rcvBarang.setAdapter(new BarangAdapter(mContext, semuaBarangItems));
+                    barangAdapter.notifyDataSetChanged();
+
+                } else {
+                    Toast.makeText(mContext, "Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProduklistResponse> call, Throwable t) {
+                Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
     }

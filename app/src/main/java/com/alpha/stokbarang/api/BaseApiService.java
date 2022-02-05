@@ -62,11 +62,13 @@ public interface BaseApiService {
     @GET("produk/scan/{kode}")
     Call<ResponseBody> getScan(@Path("kode") String kode);
 
+    @GET("produk/cari/{text}")
+    Call<ProduklistResponse> getCariProduk(@Path("text") String text);
+
     @DELETE("pegawai/hapus/{nip}")
     Call<ResponseBody> hapusPegawai(@Path("nip") String nip);
 
     @DELETE("produk/hapus/{kd_produk}")
     Call<ResponseBody> hapusProduk(@Path("kd_produk") String kd_produk);
-
 
 }
